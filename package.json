@@ -1,0 +1,14 @@
+{
+    "name": "ai-portfolio-fullstack",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "npm run client",
+        "dev": "npm run client",
+        "server:legacy": "cd server && npm start",
+        "client": "cd client && npm run dev",
+        "install-all": "npm install concurrently && cd server && npm install && cd ../client && npm install"
+    },
+    "dependencies": {
+        "concurrently": "^8.2.0"
+    }
+}

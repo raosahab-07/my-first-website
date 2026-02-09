@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rao Sahab - Full Stack Developer Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #05060A; color: white; }
+        .container { max-width: 800px; margin: 0 auto; background: #0F1115; padding: 40px; border-radius: 16px; }
+        h1 { color: #7C3AED; font-size: 36px; margin-bottom: 10px; }
+        h2 { color: #F472B6; border-bottom: 2px solid #7C3AED; padding-bottom: 10px; margin-top: 30px; }
+        .contact { margin: 20px 0; }
+        .section { margin: 25px 0; }
+        .job-title { font-weight: bold; color: #7C3AED; }
+        .company { color: #F472B6; }
+        .date { color: #888; font-style: italic; }
+        ul { margin: 10px 0; padding-left: 20px; }
+        li { margin: 8px 0; }
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; }
+        .skill { background: rgba(124, 58, 237, 0.1); border: 1px solid #7C3AED; padding: 8px 12px; border-radius: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rao Sahab</h1>
+        <p>Senior Full Stack Developer & UI/UX Designer</p>
+        <div class="contact">
+            <p>Email: raushanyadav2028.r@gmail.com | Phone: +91 95766 89637</p>
+            <p>Location: India | Available for remote work</p>
+        </div>
+
+        <h2>Professional Summary</h2>
+        <p>Passionate full-stack engineer with 4+ years of experience building scalable web applications and creating exceptional user experiences. Specializing in modern technologies and pixel-perfect design implementation.</p>
+
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill">React</div>
+            <div class="skill">Next.js</div>
+            <div class="skill">TypeScript</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Python</div>
+            <div class="skill">MongoDB</div>
+            <div class="skill">PostgreSQL</div>
+            <div class="skill">Tailwind CSS</div>
+            <div class="skill">Figma</div>
+        </div>
+
+        <h2>Work Experience</h2>
+        
+        <div class="section">
+            <div class="job-title">Senior Full Stack Developer</div>
+            <div class="company">Tech Innovations Inc.</div>
+            <div class="date">January 2022 - Present</div>
+            <ul>
+                <li>Led development of scalable web applications serving 100K+ users</li>
+                <li>Implemented modern React architecture with TypeScript and Next.js</li>
+                <li>Designed and developed responsive UI components with Tailwind CSS</li>
+                <li>Collaborated with cross-functional teams to deliver high-quality products</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="job-title">Frontend Developer</div>
+            <div class="company">Digital Solutions Ltd.</div>
+            <div class="date">March 2020 - December 2021</div>
+            <ul>
+                <li>Developed responsive web interfaces using React and Vue.js</li>
+                <li>Created design systems and component libraries</li>
+                <li>Optimized application performance and user experience</li>
+                <li>Mentored junior developers and conducted code reviews</li>
+            </ul>
+        </div>
+
+        <h2>Education</h2>
+        <div class="section">
+            <div class="job-title">Bachelor of Technology</div>
+            <div class="company">Computer Science & Engineering</div>
+            <div class="company">Indian Institute of Technology</div>
+            <div class="date">2016 - 2020</div>
+            <p>Specialized in Software Engineering and Human-Computer Interaction. Graduated with honors.</p>
+        </div>
+    </div>
+</body>
+</html>

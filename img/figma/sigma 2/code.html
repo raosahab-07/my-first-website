@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Detail View - Portfolio</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#05060A", // Updated to match user request #05060A
+                        "surface-dark": "#131118",
+                        "border-dark": "#2e2839"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", // rounded-md
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131118; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2e2839; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #443b54; 
+        }
+        /* Sticky sidebar helper */
+        .sticky-sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased min-h-screen flex flex-col">
+<!-- Header / Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center size-8 rounded bg-primary text-white">
+<span class="material-symbols-outlined text-xl">code</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">John Doe</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Work</a>
+<a class="text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">About</a>
+<a class="text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Resume</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="hidden sm:inline-flex items-center justify-center rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/20" href="#">
+                        Contact
+                    </a>
+<button aria-label="Toggle theme" class="p-2 text-slate-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">light_mode</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full">
+<!-- Hero Section -->
+<div class="relative w-full h-[60vh] min-h-[400px] flex items-end">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="Modern dashboard interface on a laptop screen with data visualization charts" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtMN5_bJbRZ-m1c_AZ-MoCuVyXlzbH66jSfICddCu3lpXSDg9BErUPXFlA5p1zaidwfOC0w1Qnh62OcqkEA_kn4b3A7zg-q8vpqzBgwCDAfjE_HeTPwqkrPXia4p5gB37m28H1-My4I61t7JuNVpKhYPtVpVq1m3f-LmeGaVA9QfCkqSzCaf7pd8PIKmpvVDK2LtIIua-UbLd3qs5y67cUyCtlDt2SONlq8ZQ9mscJGE3Jk09jC-it08It4pne_ujkZG6UudQ9BIc");'></div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent"></div>
+<div class="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 w-full">
+<div class="max-w-3xl">
+<div class="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary uppercase tracking-wider backdrop-blur-sm">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+                        Case Study
+                    </div>
+<h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
+                        Fintech Dashboard Redesign
+                    </h1>
+<p class="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl">
+                        A comprehensive UX overhaul for a Series B startup, streamlining complex data visualization to improve user adoption by 40%.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Content Grid -->
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Main Column (Left - 8 cols) -->
+<div class="lg:col-span-8 space-y-16">
+<!-- Overview Section -->
+<section class="prose prose-lg prose-invert max-w-none">
+<h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+<span class="flex items-center justify-center size-8 rounded bg-surface-dark border border-border-dark text-primary">
+<span class="material-symbols-outlined text-lg">description</span>
+</span>
+                            Overview
+                        </h2>
+<p class="text-gray-400 leading-relaxed">
+                            The client, a fast-growing fintech startup, was struggling with a legacy dashboard that was difficult to navigate and slow to load. Users were overwhelmed by unstructured data, leading to high churn rates during the trial period. 
+                        </p>
+<p class="text-gray-400 leading-relaxed mt-4">
+                            My role was to lead the redesign from discovery to delivery, focusing on creating a modular design system and implementing a performant frontend architecture.
+                        </p>
+</section>
+<!-- Stats / Highlights -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="p-6 rounded-lg bg-surface-dark border border-border-dark">
+<p class="text-4xl font-bold text-primary mb-1">40%</p>
+<p class="text-sm text-gray-400">Increase in User Adoption</p>
+</div>
+<div class="p-6 rounded-lg bg-surface-dark border border-border-dark">
+<p class="text-4xl font-bold text-primary mb-1">2.5s</p>
+<p class="text-sm text-gray-400">Reduction in Load Time</p>
+</div>
+<div class="p-6 rounded-lg bg-surface-dark border border-border-dark">
+<p class="text-4xl font-bold text-primary mb-1">A+</p>
+<p class="text-sm text-gray-400">Accessibility Score</p>
+</div>
+</div>
+<!-- The Challenge -->
+<section>
+<h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+<span class="flex items-center justify-center size-8 rounded bg-surface-dark border border-border-dark text-primary">
+<span class="material-symbols-outlined text-lg">flag</span>
+</span>
+                            The Challenge
+                        </h2>
+<div class="space-y-6 text-gray-400 leading-relaxed">
+<p>
+                                The primary challenge was dealing with technical debt while trying to innovate on the user experience. The existing codebase was a monolithic structure that made it hard to implement modern interactive charts.
+                            </p>
+<ul class="list-none space-y-3 pl-2">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-400 mt-1">close</span>
+<span>Slow initial page loads causing user frustration.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-400 mt-1">close</span>
+<span>Inconsistent UI components across different modules.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-400 mt-1">close</span>
+<span>Lack of mobile responsiveness for on-the-go traders.</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Image Gallery / Carousel Concept -->
+<section class="space-y-6">
+<div class="rounded-xl overflow-hidden border border-border-dark bg-surface-dark shadow-2xl">
+<div class="w-full aspect-video bg-cover bg-center" data-alt="High fidelity wireframe of the main dashboard showing stock charts and user profile" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZomDm-O1FR2jKuNb9f9HX_xcfN0elE6DeSOnbWoIJezzNjuPebU9DZLk9ceLazHvXMGQ-31EETH_cGhiocy6frLVql0h2Dc9HMIIrZIxgiQuLb3VrjOqr0ii_9Ss3DIcYgfi_-ZBnsvXzBTuy_6A0GImIKbgrE0cbBkA3ZlJ85AbPStd5ZhNpYnHUJMZ_hrow_qmOjY2lhR5rLV4wfHzJoBS9i4UL3Wip5RufmKDqQ_mQDmNNq62F-D1doqNUVZd3gNQ3TbIWmPg");'></div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="rounded-xl overflow-hidden border border-border-dark bg-surface-dark shadow-lg">
+<div class="w-full aspect-[4/3] bg-cover bg-center" data-alt="Close up of code editor showing React component structure" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARruWrpeWzipmG4ANkfa7XPX9EVCPEni2KkcpXzu3UFTCA_jt77y-1Lbqfj8UoNOOJwqzaSaYlitX9zaEbi2olXLLX1ijmfX2PuC77JXH-usqlqrFbpkVscD0ysj1XCbOm0FlKK8cdbu5V7_ikt1ABfG5LQrv9f0Z1tW5aPSYWCa5lp02wUGaIg0Qn1IzvSDACLxLsx_q6wUZbRjpZIvdbY65jH7H6hOoO0m519V2Rk8337msExdccAACncQCiBi7CI5Y1jDpSmDY");'></div>
+</div>
+<div class="rounded-xl overflow-hidden border border-border-dark bg-surface-dark shadow-lg">
+<div class="w-full aspect-[4/3] bg-cover bg-center" data-alt="Mobile view of the application on a smartphone held by a hand" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqdkXmTwmR0-Pa9R76ZLEpo7twZG41Zhno0JOJVjnMu3-WaDzi0OH12IKz28xfBrdcrIHQyMbsrBU993e-rxO8sDlXNsmjqBgl-KRdC2rKYWLwDwwfO4oJQJIzUTO3eAj039vT_vfRnwkEr6Txvbp5vRdijvLQVC7SpVxsQzeY8V912twPT3We8PF3Rm1UcGkJKo6-yom2qsnb3YcdP3cTKF9OfFIwZDnCC77mO9H1rsYBSyAU0l-D8aTlYV2SxeK8FbB4u_kjNYk");'></div>
+</div>
+</div>
+<p class="text-sm text-center text-gray-500 italic">Wireframes to High-Fidelity Mockups</p>
+</section>
+<!-- The Solution -->
+<section>
+<h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+<span class="flex items-center justify-center size-8 rounded bg-surface-dark border border-border-dark text-primary">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</span>
+                            The Solution
+                        </h2>
+<div class="space-y-6 text-gray-400 leading-relaxed">
+<p>
+                                We decided to rebuild the frontend using Next.js to leverage server-side rendering for faster initial loads. I created a custom design system in Figma that mapped directly to Tailwind CSS utility classes, ensuring consistency between design and code.
+                            </p>
+<p>
+                                For data visualization, we integrated Recharts with a custom wrapper to handle real-time websocket data, providing users with instant feedback on market changes.
+                            </p>
+</div>
+</section>
+</div>
+<!-- Sidebar (Right - 4 cols) -->
+<aside class="lg:col-span-4 space-y-8">
+<div class="sticky-sidebar space-y-8">
+<!-- Project Meta Card -->
+<div class="rounded-xl bg-surface-dark border border-border-dark p-6 shadow-sm">
+<h3 class="text-lg font-semibold text-white mb-6">Project Details</h3>
+<div class="space-y-5">
+<div class="flex items-start justify-between border-b border-white/5 pb-4 last:border-0 last:pb-0">
+<span class="text-sm text-gray-500">Role</span>
+<span class="text-sm font-medium text-white text-right">Lead Product Designer<br/><span class="text-xs text-gray-500 font-normal">&amp; Frontend Developer</span></span>
+</div>
+<div class="flex items-start justify-between border-b border-white/5 pb-4 last:border-0 last:pb-0">
+<span class="text-sm text-gray-500">Timeline</span>
+<span class="text-sm font-medium text-white text-right">3 Months<br/><span class="text-xs text-gray-500 font-normal">Q3 2023</span></span>
+</div>
+<div class="flex items-start justify-between border-b border-white/5 pb-4 last:border-0 last:pb-0">
+<span class="text-sm text-gray-500">Client</span>
+<span class="text-sm font-medium text-white text-right">Fintech Startup<br/><span class="text-xs text-gray-500 font-normal">Series B</span></span>
+</div>
+</div>
+</div>
+<!-- Tech Stack -->
+<div class="rounded-xl bg-surface-dark border border-border-dark p-6 shadow-sm">
+<h3 class="text-lg font-semibold text-white mb-4">Tech Stack</h3>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center rounded-md bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300 ring-1 ring-inset ring-white/10">React</span>
+<span class="inline-flex items-center rounded-md bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300 ring-1 ring-inset ring-white/10">Next.js</span>
+<span class="inline-flex items-center rounded-md bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300 ring-1 ring-inset ring-white/10">TypeScript</span>
+<span class="inline-flex items-center rounded-md bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300 ring-1 ring-inset ring-white/10">Tailwind CSS</span>
+<span class="inline-flex items-center rounded-md bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300 ring-1 ring-inset ring-white/10">Node.js</span>
+<span class="inline-flex items-center rounded-md bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300 ring-1 ring-inset ring-white/10">Recharts</span>
+<span class="inline-flex items-center rounded-md bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300 ring-1 ring-inset ring-white/10">Figma</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-3">
+<a class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all" href="#">
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+                                View Live Demo
+                            </a>
+<a class="flex w-full items-center justify-center gap-2 rounded-lg bg-surface-dark border border-border-dark px-6 py-3.5 text-sm font-bold text-white shadow-sm hover:bg-white/5 hover:border-gray-600 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">code</span>
+                                Source Code
+                            </a>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Next Project Navigation -->
+<div class="border-t border-border-dark bg-surface-dark mt-10">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<div>
+<span class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2 block">Next Project</span>
+<h3 class="text-2xl md:text-3xl font-bold text-white group-hover:text-primary transition-colors">
+                            E-commerce Mobile App
+                        </h3>
+<p class="text-gray-400 mt-2 max-w-md">
+                            A fully featured mobile shopping experience built with React Native and GraphQL.
+                        </p>
+</div>
+<a class="group flex items-center gap-4 rounded-xl border border-border-dark bg-background-dark p-2 pr-6 hover:border-primary/50 transition-all" href="#">
+<div class="h-20 w-20 overflow-hidden rounded-lg">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Screenshot of an ecommerce mobile app showing product listing" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqpnQYxN6IecDA46yj8Sg4Ubw921XCZNgOgtq4dVOWu9pQglWTSpdTCnR5UyV7nyQr38B6DonHPsSAQ3qeT5aOJYJAbYEQb5VihD5zQUqvWCSZBpME9XPL2a9nafgwOKKbkuZXjkb33UvhGk3g0tLOHbWO-Ff66BSddqKybI0La2kgYo69EVpYBgCkeZiVf7XX5MsblXaxG-SY91sAA7gSR9GulwYWn9anSJGgW7J4Bm4j93FheG3zIZTUBJEF7ew2CoafBoFeuLo");'></div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-white group-hover:text-primary transition-colors">View Case Study</span>
+<span class="material-symbols-outlined text-white group-hover:translate-x-1 group-hover:text-primary transition-all">arrow_forward</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-background-dark py-12">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<p class="text-sm text-gray-500">© 2024 John Doe. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-gray-500 hover:text-white transition-colors" href="#">
+<span class="sr-only">Twitter</span>
+<!-- Simple SVG icon for social media placeholder -->
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+</svg>
+</a>
+<a class="text-gray-500 hover:text-white transition-colors" href="#">
+<span class="sr-only">GitHub</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-500 hover:text-white transition-colors" href="#">
+<span class="sr-only">LinkedIn</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

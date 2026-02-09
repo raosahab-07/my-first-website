@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard - Messages Inbox</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3bed",
+                        "primary-hover": "#6d28d9",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#131118",
+                        "surface-dark": "#1c1924",
+                        "surface-dark-highlight": "#2e2839",
+                        "border-dark": "#342e40",
+                        "text-secondary": "#a79db9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["monospace"] // Simple fallback for IPs
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131118; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #342e40; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b445a; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<nav class="hidden md:flex flex-col w-20 lg:w-64 h-full bg-[#131118] border-r border-border-dark flex-shrink-0 transition-all duration-300">
+<div class="flex items-center gap-3 p-6 h-20">
+<div class="bg-gradient-to-br from-primary to-purple-400 aspect-square rounded-lg size-10 flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white">grid_view</span>
+</div>
+<div class="flex flex-col hidden lg:flex">
+<h1 class="text-white text-base font-bold leading-tight tracking-tight">Admin Console</h1>
+<p class="text-text-secondary text-xs font-normal">Enterprise</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 px-3 py-4 flex-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 border border-primary/20 text-white group hover:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">inbox</span>
+<span class="text-sm font-medium hidden lg:block">Inbox</span>
+<span class="hidden lg:flex ml-auto bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:text-white hover:bg-surface-dark-highlight transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium hidden lg:block">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:text-white hover:bg-surface-dark-highlight transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium hidden lg:block">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:text-white hover:bg-surface-dark-highlight transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium hidden lg:block">Settings</span>
+</a>
+</div>
+<div class="p-4 border-t border-border-dark mt-auto">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-dark-highlight cursor-pointer transition-colors">
+<div class="relative">
+<img alt="Current user profile" class="size-9 rounded-full object-cover ring-2 ring-border-dark" data-alt="Woman with curly hair smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkMeqvY_DDdY0HXR2LadoXDOTQDFTURy6hse-p3TczM-gZ_4NEccKVC8ZrrPjooTue3wz599MaFNmBPc7ewpvHaTCf4MCskok3CpdIBt5hLOgtkIZyU-40SfzVBczOfK4hFDLQR0D90p7kQlIxgB9hDwhFA6PKjP-3AqHM2MM9Le3_tgSLUvYmSw4-BZzFc9u5sFiUE65RKRTwCRtuefDBoWhvS6RCEwsxLuj3Dpl2kWVrcNgjw9vcgTE2WqwgoRUfYE8hpTEiZJM"/>
+<div class="absolute bottom-0 right-0 size-2.5 bg-green-500 border-2 border-[#131118] rounded-full"></div>
+</div>
+<div class="hidden lg:block overflow-hidden">
+<p class="text-sm font-medium text-white truncate">Sarah Connor</p>
+<p class="text-xs text-text-secondary truncate">sarah@admin.com</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex flex-1 flex-col md:flex-row h-full overflow-hidden bg-surface-dark">
+<!-- Left Pane: Message List -->
+<section class="w-full md:w-96 lg:w-[400px] flex flex-col border-r border-border-dark bg-[#131118] h-full flex-shrink-0 z-10">
+<!-- Header & Search -->
+<div class="p-4 border-b border-border-dark space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-white">Messages</h2>
+<button class="size-8 flex items-center justify-center rounded-lg bg-surface-dark-highlight text-text-secondary hover:text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+</div>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="w-full bg-surface-dark-highlight border-none rounded-lg py-2.5 pl-10 pr-4 text-sm text-white placeholder-text-secondary focus:ring-1 focus:ring-primary focus:bg-[#1f1b29] transition-all" placeholder="Search messages..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-surface-dark-highlight text-xs font-medium text-white hover:bg-[#3a3347] transition-colors text-center border border-primary/30">All</button>
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-transparent border border-border-dark text-xs font-medium text-text-secondary hover:text-white hover:bg-surface-dark-highlight transition-colors text-center">Unread</button>
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-transparent border border-border-dark text-xs font-medium text-text-secondary hover:text-white hover:bg-surface-dark-highlight transition-colors text-center">Archived</button>
+</div>
+</div>
+<!-- List Items -->
+<div class="flex-1 overflow-y-auto">
+<!-- Message Item: Active -->
+<div class="group relative flex gap-4 p-4 cursor-pointer bg-surface-dark-highlight/50 border-l-2 border-primary hover:bg-surface-dark-highlight transition-colors">
+<div class="relative flex-shrink-0">
+<img alt="Sender Avatar" class="size-10 rounded-full object-cover" data-alt="Man with glasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb-eUaM-PAfubA2emmLGlC4seEMzlCGjvWbSWvbQ3JS2AeMYBqQLQL1ND6Cr-wFld0S5YkQYNJP4VuvJ7tw2gUYNYxJIUUTWIKZNLWnyaq4NqcrCm3uFPZXkLCUB6-Z-vbrYa0XM-ub1Dn2O2VS6flvWtbtxqKcsOEBFuTaTmIPKqm8wH7msLYZM4yX6blBIJyMFcVixGUHsvFCLPVXZ9g3NN73FKJGeBF15jvdFBXkr3T0eHRKJFO-JWMipXXz8kzanKxq3fO25E"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="text-sm font-semibold text-white truncate pr-2">Jane Doe</h3>
+<span class="text-xs text-text-secondary whitespace-nowrap">10m ago</span>
+</div>
+<p class="text-sm text-white font-medium truncate mb-1">Project Inquiry for Enterprise License</p>
+<p class="text-xs text-text-secondary truncate line-clamp-1">Hello team, I am interested in upgrading our current plan to the Enterprise tier...</p>
+</div>
+</div>
+<!-- Message Item: Unread -->
+<div class="group relative flex gap-4 p-4 cursor-pointer border-l-2 border-transparent hover:bg-surface-dark-highlight/30 transition-colors">
+<div class="relative flex-shrink-0">
+<div class="size-10 rounded-full bg-indigo-900/50 flex items-center justify-center text-indigo-300 font-bold border border-indigo-500/20">JS</div>
+<div class="absolute -top-1 -right-1 size-3 bg-primary border-2 border-[#131118] rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="text-sm font-semibold text-white truncate pr-2">John Smith</h3>
+<span class="text-xs text-primary font-medium whitespace-nowrap">2h ago</span>
+</div>
+<p class="text-sm text-white font-medium truncate mb-1">Bug Report #442 - Critical Issue</p>
+<p class="text-xs text-text-secondary truncate line-clamp-1">We've encountered a critical issue in the payment gateway integration...</p>
+</div>
+</div>
+<!-- Message Item: Read -->
+<div class="group relative flex gap-4 p-4 cursor-pointer border-l-2 border-transparent hover:bg-surface-dark-highlight/30 transition-colors">
+<div class="relative flex-shrink-0">
+<div class="size-10 rounded-full bg-emerald-900/50 flex items-center justify-center text-emerald-300 font-bold border border-emerald-500/20">SB</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="text-sm font-medium text-gray-300 truncate pr-2">Server Bot</h3>
+<span class="text-xs text-text-secondary whitespace-nowrap">1d ago</span>
+</div>
+<p class="text-sm text-gray-400 truncate mb-1">Weekly System Digest</p>
+<p class="text-xs text-text-secondary truncate line-clamp-1">Here is your weekly summary of system performance and uptime statistics.</p>
+</div>
+</div>
+<!-- Message Item: Read -->
+<div class="group relative flex gap-4 p-4 cursor-pointer border-l-2 border-transparent hover:bg-surface-dark-highlight/30 transition-colors">
+<div class="relative flex-shrink-0">
+<img alt="Sender Avatar" class="size-10 rounded-full object-cover grayscale opacity-70" data-alt="Woman with red hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHoPK9SUI8SXy2KvdKwzQ35S7FnkNbN8uZcaMRZ83VMWSqje4XeRPEW_qlpPO7wqtr_PiMBR-DY_JCyEHsf8Pek_wwBwmu7hJGFRH25YJwx44F4vv_ap9kiA8hAeFf9LeULuJhq0_13pjJlqryL_faVgodhiUNlHGVgTM01u0lhljv_1dWQIsNoD-bOAjgNdJmo9h48GIAcysSd78YfDRyv9TRT_apSZzMpKaytdQ3Zkfp5K4ZlnMHjVpOsNzH6QJtLMpLMDoHrvw"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="text-sm font-medium text-gray-300 truncate pr-2">Alice Cooper</h3>
+<span class="text-xs text-text-secondary whitespace-nowrap">2d ago</span>
+</div>
+<p class="text-sm text-gray-400 truncate mb-1">Re: Dashboard access</p>
+<p class="text-xs text-text-secondary truncate line-clamp-1">Thanks for the quick response. I'm able to login now.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Message Detail -->
+<section class="flex-1 flex flex-col h-full bg-[#0f0d13] relative">
+<!-- Detail Header Toolbar -->
+<header class="flex items-center justify-between p-4 md:px-8 border-b border-border-dark bg-[#131118]">
+<div class="flex items-center gap-2">
+<button class="p-2 text-text-secondary hover:text-white hover:bg-surface-dark-highlight rounded-lg transition-colors tooltip-trigger" title="Archive">
+<span class="material-symbols-outlined">archive</span>
+</button>
+<button class="p-2 text-text-secondary hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<div class="w-px h-6 bg-border-dark mx-1"></div>
+<button class="p-2 text-text-secondary hover:text-white hover:bg-surface-dark-highlight rounded-lg transition-colors" title="Mark as unread">
+<span class="material-symbols-outlined">mark_email_unread</span>
+</button>
+<button class="p-2 text-text-secondary hover:text-white hover:bg-surface-dark-highlight rounded-lg transition-colors" title="Add label">
+<span class="material-symbols-outlined">label</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs text-text-secondary">1 of 345</span>
+<div class="flex rounded-lg bg-surface-dark-highlight p-0.5">
+<button class="p-1 text-text-secondary hover:text-white rounded hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="p-1 text-text-secondary hover:text-white rounded hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Message Content -->
+<div class="flex-1 overflow-y-auto p-6 md:p-8 lg:pr-12 scroll-smooth">
+<div class="max-w-4xl mx-auto">
+<!-- Message Header Info -->
+<div class="flex justify-between items-start mb-8 pb-6 border-b border-border-dark">
+<div class="flex gap-4">
+<img alt="Sender Avatar" class="size-12 md:size-14 rounded-full object-cover ring-4 ring-surface-dark-highlight" data-alt="Man with glasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3xqHfBtCjrZ-Q1FLflsgawCQ11jmETExQNrzl7YMJb--Sii_9qWzW_EXb_EaLaGZw6whj7KKr6DkGc7dDkqle9AMFiF6oneCeC_hFudNvQMxlmptSafuhhmQM-SCNo-T1gqueskha95WydrFxwF2-fVxFlqMWztm1f2bWBEM60L1A-N-I_v0Fh-lPI2KXxbN9-tnxW8ir4j5VljPCZyK2DaKvDoFj9Q1cC1-RZ9SKs-V2cQJXjpeRvwnd8w3P40WY0qhVxLy8dDY"/>
+<div>
+<h1 class="text-xl md:text-2xl font-bold text-white mb-1">Project Inquiry for Enterprise License</h1>
+<div class="flex flex-wrap items-center gap-x-2 text-sm">
+<span class="font-medium text-white">Jane Doe</span>
+<span class="text-text-secondary">&lt;jane.doe@acmecorp.com&gt;</span>
+<span class="text-text-secondary hidden sm:inline">•</span>
+<span class="text-text-secondary text-xs bg-surface-dark-highlight px-2 py-0.5 rounded border border-border-dark">New Lead</span>
+</div>
+<div class="mt-1 text-xs text-text-secondary">
+                                        To: <span class="text-gray-400">admin@company.com</span>
+</div>
+</div>
+</div>
+<div class="text-right hidden sm:block">
+<p class="text-sm font-medium text-white">Oct 24, 2023</p>
+<p class="text-xs text-text-secondary">10:42 AM (10m ago)</p>
+</div>
+</div>
+<!-- Message Body -->
+<div class="prose prose-invert prose-p:text-gray-300 prose-a:text-primary max-w-none">
+<p class="mb-4">Hello team,</p>
+<p class="mb-4">I hope this email finds you well.</p>
+<p class="mb-4">I am interested in upgrading our current plan to the Enterprise tier. We have been using the platform for about 6 months on the Pro plan and we are hitting some limits with user seats and API requests.</p>
+<p class="mb-4">Could you please provide more information on:</p>
+<ul class="list-disc pl-5 mb-4 space-y-1 text-gray-300">
+<li>Pricing structure for 50+ seats</li>
+<li>SLA guarantees for enterprise customers</li>
+<li>Custom integration support options</li>
+</ul>
+<p class="mb-6">We are looking to make a decision by the end of next week, so a quick response would be greatly appreciated.</p>
+<p class="mb-8">Best regards,<br/>Jane Doe<br/>CTO, Acme Corp</p>
+</div>
+<!-- Attachments -->
+<div class="mb-8">
+<h4 class="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-3">Attachments (1)</h4>
+<div class="flex gap-4">
+<div class="group flex items-center gap-3 p-3 rounded-lg border border-border-dark bg-surface-dark-highlight/30 hover:bg-surface-dark-highlight hover:border-primary/40 transition-all cursor-pointer w-fit">
+<div class="bg-red-500/20 text-red-400 p-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">Requirements_Doc_v2.pdf</span>
+<span class="text-xs text-text-secondary">2.4 MB</span>
+</div>
+<button class="ml-2 p-1.5 rounded-full hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Reply Box -->
+<div class="mt-8 border border-border-dark rounded-xl bg-surface-dark-highlight/30 overflow-hidden focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-transparent transition-all">
+<div class="p-4">
+<textarea class="w-full bg-transparent border-none text-white placeholder-text-secondary focus:ring-0 resize-none" placeholder="Write your reply..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-between px-4 py-3 bg-surface-dark-highlight border-t border-border-dark">
+<div class="flex gap-2">
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">mood</span>
+</button>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+<span>Send Reply</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Metadata Panel (Collapsible) -->
+<aside class="hidden xl:flex w-72 flex-col border-l border-border-dark bg-[#131118] p-6 overflow-y-auto">
+<h3 class="text-sm font-bold text-white mb-6 uppercase tracking-wider">Sender Details</h3>
+<div class="flex flex-col items-center mb-6">
+<img alt="Sender Avatar Large" class="size-24 rounded-xl object-cover mb-4 ring-1 ring-border-dark" data-alt="Man with glasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqeTDaEQP17O9YeDMR7ermdob9BpVH87ybcMmTBsKTBY03TGow_OehLLMK-t3-TriLVO03BOR5g6ajuF36kRYh0fMxzjqttk7Omy73jdZNeWMAbPX2reGjQOSH2JJwIB4BCEGVfqU9tlTRnDinG3sjMUxlSh_I1OTAQ6H1CgsnlrERIKCPHiMUi7EmAfkEKzSvOVYfnXdfTXD0npZdOpmqpt_XKPDl64pPk3nIXV8VJlfsQuXTMj76YSuUfmuxdIQMqxyIvdUEmq4"/>
+<h4 class="text-lg font-bold text-white">Jane Doe</h4>
+<p class="text-sm text-primary mb-1">CTO, Acme Corp</p>
+<div class="flex gap-2 mt-3">
+<button class="p-2 rounded-lg bg-surface-dark-highlight border border-border-dark hover:border-primary/50 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-dark-highlight border border-border-dark hover:border-primary/50 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-dark-highlight border border-border-dark hover:border-primary/50 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h5 class="text-xs font-semibold text-text-secondary uppercase mb-2">Technical Info</h5>
+<div class="bg-surface-dark-highlight rounded-lg p-3 space-y-3 border border-border-dark/50">
+<div class="flex justify-between items-center">
+<span class="text-xs text-text-secondary">IP Address</span>
+<span class="text-xs font-mono text-white bg-[#0f0d13] px-2 py-1 rounded border border-border-dark">192.168.42.1</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-text-secondary">Browser</span>
+<span class="text-xs text-gray-300">Chrome 120 (Mac)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-text-secondary">Location</span>
+<span class="text-xs text-gray-300">San Francisco, USA</span>
+</div>
+</div>
+</div>
+<div>
+<h5 class="text-xs font-semibold text-text-secondary uppercase mb-2">Previous Tickets</h5>
+<div class="space-y-2">
+<a class="block p-3 rounded-lg border border-border-dark hover:bg-surface-dark-highlight hover:border-primary/30 transition-all group" href="#">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-medium text-white group-hover:text-primary transition-colors">#392 - Login Issue</span>
+<span class="text-[10px] text-green-400 bg-green-400/10 px-1.5 rounded">Resolved</span>
+</div>
+<p class="text-[11px] text-text-secondary">2 weeks ago</p>
+</a>
+<a class="block p-3 rounded-lg border border-border-dark hover:bg-surface-dark-highlight hover:border-primary/30 transition-all group" href="#">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-medium text-white group-hover:text-primary transition-colors">#401 - Billing Q</span>
+<span class="text-[10px] text-yellow-400 bg-yellow-400/10 px-1.5 rounded">Pending</span>
+</div>
+<p class="text-[11px] text-text-secondary">3 days ago</p>
+</a>
+</div>
+</div>
+<div>
+<h5 class="text-xs font-semibold text-text-secondary uppercase mb-2">Tags</h5>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded text-xs font-medium bg-purple-500/10 text-purple-300 border border-purple-500/20">Enterprise</span>
+<span class="px-2 py-1 rounded text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/20">High Value</span>
+<span class="px-2 py-1 rounded text-xs font-medium bg-surface-dark-highlight text-text-secondary border border-border-dark cursor-pointer hover:text-white transition-colors">+ Add</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (Mobile/Tablet) -->
+<button class="md:hidden fixed bottom-6 right-6 size-14 bg-primary text-white rounded-full shadow-lg shadow-primary/40 flex items-center justify-center z-50 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]">edit</span>
+</button>
+</body></html>
